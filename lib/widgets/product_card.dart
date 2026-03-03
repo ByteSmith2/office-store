@@ -9,44 +9,46 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(12),
-      elevation: 4,
+      elevation: 6,
+      shadowColor: Colors.black26,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
       child: Padding(
         padding: const EdgeInsets.all(10),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              product.image,
-              width: 70,
-              height: 70,
-              fit: BoxFit.contain,
-            ),
-            const SizedBox(width: 10),
+            /// IMAGE
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    product.description,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    "${product.price} USD",
-                    style: const TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: const Color(0xffF4F6FA),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Image.network(product.image, fit: BoxFit.contain),
+              ),
+            ),
+
+            const SizedBox(height: 10),
+
+            /// NAME
+            Text(
+              product.name,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+            ),
+
+            const SizedBox(height: 6),
+
+            /// PRICE
+            Text(
+              "${product.price} USD",
+              style: const TextStyle(
+                color: Colors.teal,
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
               ),
             ),
           ],
